@@ -5,4 +5,4 @@ Aplikasi klasifikasi sampah otomatis via foto.
 Ketua Kelompok: Aurelia Mutiah Raudyatuzzahra - 24/534903/TK/59310   
 Anggota 1: Shafiyah Nuril Hayya - 24/540586/TK/60019  
 Anggota 2: Bagas Adjie Pamungkas - 24/544718/TK/60547  
-Anggota 3: <Nama Lengkap> - <NIM>
+Anggota 3: Alya Luqyana Nasywa - 24/545645/TK/60716
