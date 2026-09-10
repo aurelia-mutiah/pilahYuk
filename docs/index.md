@@ -1,4 +1,3 @@
-```md
 # PilahYuk
 
 ## Trashformers
@@ -136,4 +135,3 @@ Dengan konsep **foto → AI → kategori → panduan**, PilahYuk ingin membuat p
 
 **Project Senior Project Teknologi Informasi**  
 **Kelompok Trashformers**
-```
