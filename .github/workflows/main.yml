@@ -1,0 +1,25 @@
+name: CI - Housekeeping Check PilahYuk
+ 
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+ 
+jobs:
+  housekeeping-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+ 
+      - name: Cek keberadaan dokumen wajib proyek
+        run: |
+          test -f PRD.md && echo "OK: PRD.md ditemukan"
+          test -f README.md && echo "OK: README.md ditemukan"
+          test -d docs && echo "OK: folder docs/ ditemukan"
+ 
+      - name: Cek tidak ada kredensial yang ter-commit
+        run: |
+          ! grep -R -i -E "SECRET|PASSWORD|API_KEY|PUBLISH_PROFILE" \
+            --exclude-dir=.git --exclude=*.yml . || \
+            (echo "Terdeteksi kemungkinan kredensial ter-commit!" && exit 1)
