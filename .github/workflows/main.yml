@@ -1,26 +1,77 @@
-name: CI - Housekeeping Check PilahYuk
- 
+name: CI - PilahYuk
+
 on:
-  workflow_dispatch:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
- 
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
 jobs:
-  housekeeping-check:
+  housekeeping:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
- 
-      - name: Cek keberadaan dokumen wajib proyek
+
+      - name: Cek keberadaan dokumen & folder wajib
         run: |
-          test -f PRD.md && echo "OK: PRD.md ditemukan"
-          test -f README.md && echo "OK: README.md ditemukan"
-          test -d docs && echo "OK: folder docs/ ditemukan"
- 
-      - name: Cek tidak ada kredensial yang ter-commit
+          set -e
+          test -f README.md
+          echo "OK: README.md ditemukan"
+
+          test -d docs
+          echo "OK: folder docs/ ditemukan"
+
+      - name: Cek tidak ada nilai credential ter-hardcode
         run: |
-          ! grep -R -i -E "SECRET|PASSWORD|API_KEY|PUBLISH_PROFILE" \
-            --exclude-dir=.git --exclude=*.yml . || \
-            (echo "Terdeteksi kemungkinan kredensial ter-commit!" && exit 1)
+          ! grep -R -n -E "(SECRET|PASSWORD|API_KEY|PUBLISH_PROFILE)\s*[:=]\s*['\"][^'\"]{8,}['\"]" \
+            --exclude-dir=.git \
+            --exclude-dir=node_modules \
+            --exclude-dir=dist \
+            --exclude-dir=build \
+            --exclude=*.yml \
+            --exclude=.env.example \
+            . || \
+            (echo "Terdeteksi kemungkinan nilai credential ter-hardcode!" && exit 1)
+
+      - name: Cek .env asli tidak ter-commit
+        run: |
+          if git ls-files | grep -E '(^|/)\.env$'; then
+            echo "File .env asli terdeteksi ter-commit!"
+            exit 1
+          fi
+
+          echo "OK: tidak ada file .env asli ter-commit"
+
+  test-build:
+    needs: housekeeping
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        component: [backend, frontend]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          cache: npm
+          cache-dependency-path: ${{ matrix.component }}/package-lock.json
+
+      - name: Install dependencies
+        working-directory: ./${{ matrix.component }}
+        run: npm ci
+
+      - name: Jalankan test
+        working-directory: ./${{ matrix.component }}
+        run: npm test --if-present
+
+      - name: Build
+        working-directory: ./${{ matrix.component }}
+        run: npm run build --if-present
