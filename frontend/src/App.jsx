@@ -1,12 +1,11 @@
-import { API_DOMAIN } from './config/env'
+import LandingPage from './pages/LandingPage'
+import { ToastProvider } from './components/ui/Toast'
 
 function App() {
   return (
-    <main>
-      <h1>PilahYuk</h1>
-      <p>Setup frontend berhasil</p>
-      <p>API_DOMAIN: {API_DOMAIN}</p>
-    </main>
+    <ToastProvider>
+      <LandingPage />
+    </ToastProvider>
   )
 }
 
