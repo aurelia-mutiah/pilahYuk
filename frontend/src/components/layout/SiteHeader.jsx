@@ -35,7 +35,6 @@ export default function SiteHeader() {
     }
   }, [open])
 
-  // Tutup drawer jika layar dilebarkan melewati breakpoint mobile
   useEffect(() => {
     const mq = window.matchMedia('(min-width: 721px)')
     const onChange = (e) => { if (e.matches) setOpen(false) }
@@ -47,7 +46,12 @@ export default function SiteHeader() {
     <header className={`site-header${scrolled ? ' is-scrolled' : ''}`} id="top">
       <div className="header-inner">
         <a href="#top" className="brand" aria-label="PilahYuk, ke awal halaman">
-          <span className="brand-leaf" aria-hidden="true" />PilahYuk
+          <svg className="brand-leaf" viewBox="0 0 32 38" aria-hidden="true">
+            <path d="M16 2C6 9 3 18 7 27c2 4 5 6 9 7z" fill="#b3cb61" />
+            <path d="M16 2c10 7 13 16 9 25-2 4-5 6-9 7z" fill="#165031" />
+            <path d="M16 12v26" stroke="#dcebad" strokeWidth="1.6" strokeLinecap="round" />
+          </svg>
+          PilahYuk
         </a>
 
         <nav className={`nav${open ? ' open' : ''}`} id="site-nav" aria-label="Navigasi utama" ref={navRef}>
@@ -63,7 +67,6 @@ export default function SiteHeader() {
             </AppLink>
           ))}
 
-          {/* Hanya tampil di drawer mobile */}
           <div className="nav-auth">
             <Button variant="light" href={ROUTES.LOGIN} onClick={close}>Masuk</Button>
             <Button href={ROUTES.REGISTER} onClick={close}>Daftar</Button>

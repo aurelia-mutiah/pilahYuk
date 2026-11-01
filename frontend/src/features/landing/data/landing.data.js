@@ -8,7 +8,7 @@ export const FEATURES = [
 
 export const STEPS = [
   { icon: 'camera', title: 'Ambil Foto', desc: 'Foto sampah yang ingin kamu ketahui jenisnya.', illustration: 'phone', illustrationLabel: 'Ilustrasi: ponsel memotret sampah' },
-  { icon: 'sparkle', title: 'AI Mengklasifikasi', desc: 'PilahYuk menganalisis foto dengan teknologi AI.', illustration: 'bottle', illustrationLabel: 'Ilustrasi: botol plastik dianalisis' },
+  { icon: 'sparkle', title: 'AI Mengklasifikasi', desc: 'PilahYuk menganalisis foto dengan teknologi AI.', illustration: 'bottle-hero', illustrationLabel: 'Ilustrasi: botol plastik dianalisis' },
   { icon: 'recycle', title: 'Buang dengan Benar', desc: 'Dapatkan panduan cara membuang sesuai kategori.', illustration: 'bin', illustrationLabel: 'Ilustrasi: tempat sampah' },
 ]
 
@@ -21,7 +21,7 @@ export const CATEGORIES = [
 export const QUICK_TIPS = [
   { title: 'Bersihkan Sampah Daur Ulang', desc: 'Cuci hingga bersih agar kualitas daur ulang tetap baik.', illustration: 'clean', illustrationLabel: 'Ilustrasi: membersihkan botol' },
   { title: 'Manfaatkan Sampah Organik', desc: 'Sampah organik dapat dijadikan kompos.', illustration: 'compost', illustrationLabel: 'Ilustrasi: kompos' },
-  { title: 'Pisahkan Sampah B3', desc: 'Serahkan limbah berbahaya ke fasilitas pengelolaan resmi.', illustration: 'hazard', illustrationLabel: 'Ilustrasi: baterai' },
+  { title: 'Pisahkan Sampah B3', desc: 'Serahkan limbah berbahaya ke fasilitas pengelolaan resmi.', illustration: 'tip-hazard', illustrationLabel: 'Ilustrasi: baterai' },
 ]
 
 export const DISPOSAL_GUIDE = [
