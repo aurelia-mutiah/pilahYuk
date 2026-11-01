@@ -10,15 +10,7 @@
   display: flex; align-items: center; justify-content: space-between; gap: 20px;
 }
 .brand { font-family: var(--font-head); letter-spacing: -0.045em; font-size: 27px; font-weight: 800; color: #103e29; display: flex; align-items: center; gap: 9px; white-space: nowrap; }
-.brand-leaf {
-  position: relative; display: inline-block; width: 33px; height: 36px;
-  background: linear-gradient(120deg, #b3cb61 45%, #165031 46%);
-  border-radius: 70% 8% 70% 8%; transform: rotate(-25deg);
-}
-.brand-leaf::after {
-  content: ''; position: absolute; left: 50%; top: 2px; width: 2px; height: 32px;
-  background: #dcebad; border-radius: 2px; transform: rotate(27deg);
-}
+.brand-leaf { flex: none; width: 30px; height: 36px; transform: rotate(18deg); }
 
 .nav { display: flex; gap: 9px; align-items: center; }
 .nav > a { padding: 11px 17px; border-radius: 24px; font-weight: 700; font-size: 13px; color: #293029; }
@@ -36,8 +28,7 @@
 @media (max-width: 720px) {
   .header-inner { padding: 0 18px; }
   .brand { font-size: 21px; }
-  .brand-leaf { width: 27px; height: 29px; }
-  .brand-leaf::after { height: 26px; }
+  .brand-leaf { width: 24px; height: 29px; }
 
   .mobile-menu { display: inline-flex; }
   .search-toggle, .auth-desktop { display: none; }

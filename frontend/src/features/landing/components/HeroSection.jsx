@@ -37,7 +37,6 @@ export default function HeroSection() {
         </div>
 
         <div className="hero-art">
-          {/* Kartu foto (miring -5°) */}
           <div className="photo-card">
             <IllustrationSlot name="bottle-hero" label="Ilustrasi: botol plastik yang akan dideteksi" />
             <div className="photo-corner" aria-hidden="true" />
@@ -47,11 +46,10 @@ export default function HeroSection() {
             <div className="photo-caption">Unggah Foto Sampah<br />atau seret ke sini</div>
           </div>
 
-          {/* Kartu hasil contoh (dekoratif, bukan hasil deteksi sungguhan) */}
           <div className="hero-results">
             <div className="floating-result">
               <div className="result-top">
-                <IllustrationSlot name="bottle" label="Ilustrasi: botol plastik" />
+                <IllustrationSlot name="bottle-hero" label="Ilustrasi: botol plastik" />
                 <div>
                   <span className="float-label">Hasil Deteksi</span>
                   <strong>Botol Plastik</strong>
